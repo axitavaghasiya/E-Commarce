@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table border="2">
+        <tr>
+            <td>ID</td>
+            <td>brands_name</td>
+            <td>brands_logo</td>
+            <td>cat_id</td>
+            <td>Delete</td>
+        </tr>
+        {% for a in brands_data %}
+        <tr>
+            <td>{{a.id}}</td>
+            <td>{{a.brands_name}}</td>
+            <td><img src="/media/{{a.brands_logo}}" alt="" srcset="" width="50"></td>
+            <td>{{a.cat_id}}</td>
+            <td>
+                <a href="/brands_delete/{{a.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+
+</body>
+</html>

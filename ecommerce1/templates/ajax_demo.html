@@ -1,0 +1,76 @@
+<!-- {% load static %}   -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- <script src="{% static '/js/jquery-3.6.1.min.js'%}"></script> -->
+    
+    <script>
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                $.ajax({
+                    url:'/ajax_get_data',
+                    success:function(res){
+                        console.log(res)
+                        $('#my-data').html(res)
+                    }
+                })
+            })
+            $('#search').keyup(function(){
+                var txt = $(this).val()
+                $.ajax({
+                    url:'/ajax_get_data',
+                    data:{
+                        'searchVal':txt
+                    },
+                    success:function(res){
+                        // console.log(res)
+                        $('#my-data').html(res)
+                    }
+                })
+                console.log(txt)
+            })
+
+            $('#country').change(function(){
+                var txt = $(this).val()
+                $.ajax({
+                    url:'/ajax_get_states',
+                    data:{
+                        'c_id':txt
+                    },
+                    success:function(res){
+                        // console.log(res)
+                        $('#States').html(res)
+                    }
+                })
+                
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="text" name="search" id="search">
+    
+    <input type="button" id="btn" value="click me"/>
+    <br><br>
+
+    <select name="" id="country">
+        <option value="">select country</option>
+        {% for r in countries %}
+        <option value="{{r.id}}">{{r.c_name}}</option>
+        {%endfor%}
+    </select>
+
+    <select name="" id="States">
+        <option value="">select state</option>
+    </select>
+
+    <div id="my-data">
+
+    </div>
+</body>
+</html>

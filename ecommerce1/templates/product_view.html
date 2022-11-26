@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <th>title</th>
+            <th>desc</th>
+            <th>image</th>
+            <th>price</th>
+            <th>qty</th>
+            <th>cat_id</th>
+            <th>sub_cat</th>
+            <th>brand_id</th>
+            <th>size_id</th>
+        </tr>
+        {% for a in view_data %}
+        <tr>
+            <td>{{a.tital}}</td>
+            <td>{{a.desc}}</td>
+            <td><img src="/media/{{a.image}}" alt="" srcset="" width="50"></td>
+            <td>{{a.price}}</td>
+            <td>{{a.qty}}</td>
+            <td>{{a.cat_id}}</td>
+            <td>{{a.sub_cat}}</td>
+            <td>{{a.brand_id}}</td>
+            <td>{{a.size_id}}</td>
+            <td>
+                <a href="/delete_pro/{{a.id}}">delete</a>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
